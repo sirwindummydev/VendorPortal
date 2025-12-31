@@ -81,7 +81,7 @@ function LoginForm() {
             <Form.Item
               label={
                 <span>
-                  Username <span style={{ color: "red" }}>*</span>
+                  Username / Email<span style={{ color: "red" }}>*</span>
                 </span>
               }
               name="username"

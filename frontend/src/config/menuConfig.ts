@@ -263,10 +263,10 @@ export const menuConfig = [
     type: "divider",
   },
   {
-    key: "users",
+    key: "roles-users",
     title: "Users",
     icon: UserOutlined,
-    path: "/users",
+    path: "/superadmin/roles-management/users",
   },
 ];
 
