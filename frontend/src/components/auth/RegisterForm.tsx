@@ -80,7 +80,7 @@ function RegisterForm() {
                   First Name <span style={{ color: "red" }}>*</span>
                 </span>
               }
-              name="firstName"
+              name="first_name"
               rules={[
                 { required: true, message: "Please input your First Name!" },
               ]}
@@ -98,7 +98,7 @@ function RegisterForm() {
                   Last Name <span style={{ color: "red" }}>*</span>
                 </span>
               }
-              name="lastName"
+              name="last_name"
               rules={[
                 { required: true, message: "Please input your Last Name!" },
               ]}
@@ -107,6 +107,21 @@ function RegisterForm() {
                 placeholder="Last Name"
                 type={"text"}
                 suffix={<UserOutlined style={{ opacity: 0.5 }} />}
+              />
+            </Form.Item>
+            <Form.Item
+              label={
+                <span>
+                  Email <span style={{ color: "red" }}>*</span>
+                </span>
+              }
+              name="email"
+              rules={[{ required: true, message: "Please input your Email!" }]}
+            >
+              <Input
+                placeholder="Email"
+                type={"text"}
+                suffix={<MailOutlined style={{ opacity: 0.5 }} />}
               />
             </Form.Item>
 
@@ -159,7 +174,7 @@ function RegisterForm() {
                   Confirm Password <span style={{ color: "red" }}>*</span>
                 </span>
               }
-              name="password2"
+              name="confirm_password"
               rules={[
                 {
                   required: true,

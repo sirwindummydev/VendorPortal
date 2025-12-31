@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'corsheaders', # Added for CORS
     'rest_framework', # Added for DRF
     'rest_framework.authtoken', # Added for token authentication
+
+    # sirwin added apps
+    'apps.users',
 ]
 
 # CORS settings
