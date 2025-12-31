@@ -191,10 +191,11 @@ function RegisterForm() {
                 htmlType="submit"
                 style={{
                   width: "100%",
-                  background: !agreed ? "#a8a7a596" : "#fa8c16",
-                  borderColor: !agreed ? "#a8a7a596" : "#fa8c16",
+                  background: !agreed ? "#f1daac96" : "#fa8c16",
+                  borderColor: !agreed ? "#f1daac96" : "#fa8c16",
+                  color: !agreed ? "#e07a0da8" : "#fff",
                 }}
-                loading={false} // You can manage loading state here
+                loading={false} // Manage loading state here
                 disabled={!agreed} // Disable button if terms not agreed
               >
                 Create Account
