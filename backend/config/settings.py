@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # sirwin added apps
     'apps.users',
+    'apps.tenants',
 ]
 
 # CORS settings
