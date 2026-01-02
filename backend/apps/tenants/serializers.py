@@ -7,7 +7,7 @@ class TenantSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tenant
-        fields = ['id', 'tenant_name', 'subdomain', 'email', 'phone_number', 'account_url', 'created_at', 'created_by']
+        fields = ['id', 'tenant_name','description', 'subdomain', 'email', 'phone_number', 'account_url', 'created_at', 'created_by']
         read_only_fields = ['account_url', 'created_by']
     def create(self, validated_data):
         subdomain = validated_data.pop('subdomain')

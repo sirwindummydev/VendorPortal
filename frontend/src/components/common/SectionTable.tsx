@@ -6,13 +6,16 @@ interface SectionTableProps {
   extra?: ReactNode;
   tableComponent?: ReactNode;
   columns?: any;
+  dataSource?: any[];
 }
 const SectionTable = (props: SectionTableProps) => {
-  const { extra, tableComponent, columns } = props;
+  const { extra, tableComponent, columns, dataSource } = props;
 
   return (
     <>
-      <Table columns={columns}>{tableComponent}</Table>
+      <Table columns={columns} dataSource={dataSource}>
+        {tableComponent}
+      </Table>
     </>
   );
 };

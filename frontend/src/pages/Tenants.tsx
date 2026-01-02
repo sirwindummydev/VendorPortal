@@ -5,48 +5,57 @@ import ActionButton from "../components/common/ActionButton";
 import SectionTable from "../components/common/SectionTable";
 import type { ColumnsType } from "antd/es/table";
 
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { ImportOutlined } from "@ant-design/icons";
 import AddTenantModal from "../components/layouts/modals/AddTenantModal";
+import { getTenantDetails, getTenants } from "../api/tenants";
 
 interface AllTenantsProps {
   title?: string;
   subtitle?: string;
   actions?: ReactNode;
   token?: string;
-  domainId?: string;
+  id?: string;
   domainName?: string;
   description?: string;
   createdAt?: string;
   createdBy?: string;
   tableComponent?: ReactNode;
+  dataSource?: any[];
 }
 
 const AllTenants = (props: AllTenantsProps) => {
   const { title = "All Tenants", subtitle = "List of all tenants" } = props;
   //   const [isAddTenantModalOpen, setIsAddTenantModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [tenants, setTenants] = useState([]);
 
   const handleAddTenant = () => {
-    // Logic to open Add Tenant Modal
     setIsModalOpen(true);
   };
 
-  //   const handleOpenModal = () => {
-  //     // Logic to open Add Tenant Modal
-  //     setIsAddTenantModalOpen(true);
-  //   };
+  useEffect(() => {
+    const fetchTenants = async () => {
+      try {
+        const data = await getTenants();
+        setTenants(data);
+      } catch (error) {
+        console.error("Error fetching tenants:", error);
+      }
+    };
+    fetchTenants();
+  }, []);
 
   const columns: ColumnsType<AllTenantsProps> = [
     {
       title: "Tenant ID",
-      dataIndex: "tenantId",
-      key: "tenantId",
+      dataIndex: "id",
+      key: "id",
     },
     {
       title: "Tenant Name",
-      dataIndex: "tenantName",
-      key: "tenantName",
+      dataIndex: "tenant_name",
+      key: "tenant_name",
     },
     {
       title: "Description",
@@ -60,21 +69,29 @@ const AllTenants = (props: AllTenantsProps) => {
     },
     {
       title: "Account URL",
-      dataIndex: "accountUrl",
-      key: "accountUrl",
+      dataIndex: "account_url",
+      key: "account_url",
     },
+
+    {
+      title: "Created At",
+      dataIndex: "created_at",
+      key: "created_at",
+      render: (value: string) => {
+        const date = new Date(value);
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "2-digit",
+        });
+      },
+    },
+    // { title: "Created By", dataIndex: "created_by", key: "created_by" },
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
     },
-
-    {
-      title: "Created At",
-      dataIndex: "CreatedAt",
-      key: "createdAt",
-    },
-    { title: "Created By", dataIndex: "createdBy", key: "createdBy" },
     { title: "Action", dataIndex: "action", key: "action" },
   ];
 
@@ -102,7 +119,7 @@ const AllTenants = (props: AllTenantsProps) => {
           ]}
         />
 
-        <SectionTable columns={columns} />
+        <SectionTable columns={columns} dataSource={tenants} />
       </Space>
       <AddTenantModal
         isOpen={isModalOpen}
