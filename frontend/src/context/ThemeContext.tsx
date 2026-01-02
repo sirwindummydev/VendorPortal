@@ -7,6 +7,8 @@ const themes = {
   orange: {
     token: {
       colorPrimary: "#ffa940",
+      colorContrast: "#092c4c",
+
       borderRadius: 6,
     },
     components: {
