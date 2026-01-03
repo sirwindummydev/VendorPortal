@@ -86,7 +86,11 @@ const AllTenants = (props: AllTenantsProps) => {
         });
       },
     },
-    // { title: "Created By", dataIndex: "created_by", key: "created_by" },
+    {
+      title: "Created By",
+      dataIndex: "created_by_name",
+      key: "created_by_name",
+    },
     {
       title: "Status",
       dataIndex: "status",
