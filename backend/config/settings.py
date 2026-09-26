@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-dq@*urt4e02-+f2539^urgc+&$=ldpgl640j$h=z5!59s&xloi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.localhost']  # the leading dot allows all subdomains
 
 
 # Application definition
@@ -44,12 +45,17 @@ INSTALLED_APPS = [
     # sirwin added apps
     'apps.users',
     'apps.tenants',
+    'apps.modules',
+    'apps.tenant_users',
 ]
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^http://[\w.-]+\.localhost:\d+$",
 ]
 
 MIDDLEWARE = [

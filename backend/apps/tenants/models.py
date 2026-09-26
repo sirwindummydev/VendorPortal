@@ -8,7 +8,7 @@ class Tenant(models.Model):
     description = models.TextField(blank=True, null=True)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15)
-    subdomain = models.CharField(max_length=100, unique=True, default='default')
+    tenant_subdomain  = models.CharField(max_length=100, unique=True, default='default')
     account_url = models.URLField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -8,7 +8,7 @@ export const createTenant = async (tenantData: {
   tenant_name: string;
   description: string;
   email: string;
-  subdomain: string;
+  tenant_subdomain: string;
   phone_number: string;
 }) => {
   const response = await api.post("apps/tenants/", tenantData);
@@ -25,7 +25,7 @@ export const updateTenant = async (
     tenant_name: string;
     description: string;
     email: string;
-    subdomain: string;
+    tenant_subdomain: string;
     phone_number: string;
   }
 ) => {
