@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from .models import TenantUser, TenantUserToken
 from apps.tenants.models import Tenant
+from apps.organization.serializers import OrgUniSerializer
 from django.contrib.auth.hashers import check_password
 import secrets
 
@@ -96,3 +97,20 @@ class LogoutView(APIView):
         finally:
             return Response({'details':'Logged out successfully'}, status = 200)
                 
+
+class OrgChainView(APIView):
+    permission_classes=[AllowAny]
+
+    def get(self, request, tenant_user_id, *args, **kwargs):
+        try:
+            user = TenantUser.objects.get(id=tenant_user_id)
+            
+        except TenantUser.DoesNotExist:
+            return Response({'details': 'User not found'}, status=404)
+
+        if user.org_unit is None:
+            return Response({'details': 'This user has no organizational unit assigned'}, status=404)
+
+
+        chain = [user.org_unit] + user.org_unit.get_ancestors()
+        return Response(OrgUniSerializer(chain, many=True).data)

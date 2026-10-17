@@ -1,7 +1,9 @@
 from django.db import models
 from apps.tenants.models import Tenant
+from apps.organization.models import OrgUnit
 
 class TenantUser(models.Model):
+    org_unit = models.ForeignKey(OrgUnit, on_delete=models.PROTECT, null = True, blank=True, related_name = 'org_unit_users')
     tenant = models.ForeignKey(Tenant, on_delete=models.PROTECT, related_name= "users")
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=128)
@@ -18,7 +20,7 @@ class TenantUser(models.Model):
         unique_together = ("tenant","username")
 
     def __str__(self):
-        return f"{self.tenant.tenant_name}"
+        return f"TenantUser #{self.id}: {self.username} ({self.tenant.tenant_name})"
 
 
 

@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 # Create your models here.
+
 class Tenant(models.Model):
     tenant_name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)

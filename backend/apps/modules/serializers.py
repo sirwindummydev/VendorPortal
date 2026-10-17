@@ -11,4 +11,4 @@ class TenantModuleEntitlementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TenantModuleEntitlement
-        fields = ['module','enabled','config']
+        fields = ['module','enabled','config']  

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.tenants',
     'apps.modules',
     'apps.tenant_users',
+    'apps.organization',
 ]
 
 # CORS settings

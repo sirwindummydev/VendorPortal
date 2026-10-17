@@ -5,7 +5,7 @@ from .models import TenantUser, TenantUserToken
 
 @admin.register(TenantUser)
 class TenantUsersAdmin(admin.ModelAdmin):
-    list_display = ("id", "tenant","username","password", "status","created_at")
+    list_display = ("id","org_unit", "tenant","username","password", "status","created_at")
 
 @admin.register(TenantUserToken)
 class TenantUserTokenAdmin(admin.ModelAdmin):
